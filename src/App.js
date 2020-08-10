@@ -1,35 +1,28 @@
-// Use this sample to create your own voice commands
-intent(
-  "What does this app do?",
-  "What can i do here?",
-  reply("This is a news project")
-);
+import React, { useEffect } from "react";
+import "./App.css";
 
-const API_KEY = "e5fe84fec6ef435a90b88c556662627f";
+import alanBtn from "@alan-ai/alan-sdk-web";
 
-let savedArticles = [];
-//News by source
+const alanKey =
+  "a6116ac63672c4b5499c04708cc5d4272e956eca572e1d8b807a3e2338fdd0dc/stage";
 
-intent("Give me the news from $(source* (.*))", (p) => {
-  let NEWS_API_URL = `https://newsapi.org/v2/top-headlines?apiKey=${API_KEY}`;
+function App() {
+  useEffect(() => {
+    alanBtn({
+      key: alanKey,
+      onCommand: ({ command, articles }) => {
+        if (command === "newHeadlines") {
+          console.log(articles);
+        }
+      },
+    });
+  }, []);
 
-  if (p.source.value) {
-    NEWS_API_URL = `${NEWS_API_URL}&sources=${p.source.value
-      .toLowerCase()
-      .split(" ")
-      .join("-")}`;
-  }
+  return (
+    <div className="App">
+      <h1>Alan AI News Application</h1>
+    </div>
+  );
+}
 
-  api.request(NEWS_API_URL, (error, response, body) => {
-    const { articles } = JSON.parse(body);
-
-    if (!articles.length) {
-      p.play("Sorry, please try searching for news from  a diffrent source");
-      return;
-    }
-    savedArticles = articles;
-
-    p.play({ command: "newHeadlines", articles });
-    p.play(`Here are the (latest|recent ) ${p.source.value} news.`);
-  });
-});
+export default App;
