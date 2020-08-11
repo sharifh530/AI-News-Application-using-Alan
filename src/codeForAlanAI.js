@@ -10,7 +10,7 @@ const API_KEY = "e5fe84fec6ef435a90b88c556662627f";
 let savedArticles = [];
 //News by source
 
-intent("Give me the news from $(source* (.*))", (p) => {
+intent("(Give me the news from|) $(source* (.*))", (p) => {
   let NEWS_API_URL = `https://newsapi.org/v2/top-headlines?apiKey=${API_KEY}`;
 
   if (p.source.value) {
@@ -121,4 +121,19 @@ const confirmation = context(() => {
   intent("no", (p) => {
     p.play("Sure, sounds good to me");
   });
+});
+
+intent("Open (the|) (article|) (number|)  $(number* (.*))", (p) => {
+  if (p.number.value) {
+    p.play({
+      command: "open",
+      number: p.number.value,
+      articles: savedArticles,
+    });
+  }
+});
+
+intent("(go|) back", (p) => {
+  p.play("Sure, going back");
+  p.play({ command: "newHeadlines", articles: [] });
 });
