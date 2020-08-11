@@ -80,8 +80,8 @@ intent(
   (p) => {
     let NEWS_API_URL = `https://newsapi.org/v2/top-headlines?apiKey=${API_KEY}`;
 
-    if (p.term.value) {
-      NEWS_API_URL = `${NEWS_API_URL}&q=${p.C.value}`;
+    if (p.C.value) {
+      NEWS_API_URL = `${NEWS_API_URL}&category=${p.C.value}`;
     }
 
     api.request(NEWS_API_URL, (error, response, body) => {
@@ -94,7 +94,12 @@ intent(
       savedArticles = articles;
 
       p.play({ command: "newHeadlines", articles });
-      p.play(`Here are the (latest|recent ) articles on ${p.C.value} news.`);
+
+      if (p.C.value) {
+        p.play(`Here are the (latest|recent ) articles on ${p.C.value} news.`);
+      } else {
+        p.play(`Here are the (latest|recent ) news`);
+      }
     });
   }
 );
