@@ -6,4 +6,28 @@ export default makeStyles({
     width: "100%",
     margin: "0",
   },
+  card: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "Space-between",
+    alignItems: "center",
+    width: "100%",
+    height: "55vh",
+    padding: "10%",
+    borderRadius: 10,
+    color: "white",
+    fontSize: "5px",
+  },
+  infoCard: {
+    display: "flex",
+    flexDirection: "column",
+    textAlign: "center",
+  },
+  card__style: {
+    fontSize: "17px",
+  },
+  bold: {
+    fontSize: "22px",
+    fontWeight: "bold",
+  },
 });
