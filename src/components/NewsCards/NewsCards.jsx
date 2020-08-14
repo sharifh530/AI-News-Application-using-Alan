@@ -6,7 +6,12 @@ import useStyles from "./style";
 import NewsCard from "../NewsCard/NewsCard";
 
 const infoCards = [
-  { color: "#00838f", title: "Latest News", text: "Give me the latest news" },
+  {
+    color: "#283593",
+    title: "News by Sources",
+    info: "CNN, Wired, BBC News, Time, IGN, Buzzfeed, ABC News...",
+    text: "Give me the news from CNN",
+  },
   {
     color: "#1565c0",
     title: "News by Categories",
@@ -21,10 +26,10 @@ const infoCards = [
     text: "What's up with PlayStation 5",
   },
   {
-    color: "#283593",
-    title: "News by Sources",
-    info: "CNN, Wired, BBC News, Time, IGN, Buzzfeed, ABC News...",
-    text: "Give me the news from CNN",
+    color: "#00838f",
+    title: "Some important Commands",
+    info: "For going back, For reading article",
+    text: "Go back, Open article 1",
   },
 ];
 
