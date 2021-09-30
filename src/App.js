@@ -46,7 +46,7 @@ function App() {
     <div className="App">
       <div className={classes.logoContainer}>
         <img
-          src="https://alan.app/voice/images/previews/preview.jpg"
+          src="https://alan.app/brand_assets/logo-horizontal/color/alan-logo-horizontal-color.png"
           className={classes.alanLogo}
           alt="alan logo"
         />
